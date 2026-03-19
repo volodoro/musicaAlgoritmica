@@ -112,3 +112,7 @@ KICKPITCH=30
 L16 Khhh Shhh KhKh Shhh KhKh SKhK L8 K [HHH ] S:
 ```
 
+## Cómo afectar la transiente (ADSR)
+
+
+
