@@ -114,5 +114,5 @@ L16 Khhh Shhh KhKh Shhh KhKh SKhK L8 K [HHH ] S:
 
 ## Cómo afectar la transiente (ADSR)
 
-[adsr](clase01/imagenes/adsr.png)
+![adsr](./imagenes/adsr.png)
 
