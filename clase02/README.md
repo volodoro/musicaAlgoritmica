@@ -161,12 +161,13 @@ TEMPO=84
 LOOP = OF
 DELAY=OFFF
 
-V1=10 // MELODIA 10
-V2= 10 //BAJO 10
+V1=8// MELODIA 10
+V2= 7//BAJO 10
 V3=4 //PIANO GRAVE  6
 V4=4//PIANO MEDIO  6
 V5=7 //PIANO AGUDO 10
-V6=10
+V6=4
+
 VD=15
 
 //------------------BATERIA
@@ -374,18 +375,25 @@ L1: //CC1
 
 L8 {{6 :E~::G#~:}} //13 CC(INTRO Y MEL A) X2
 
-//---------AQUI ESTA EL %%
 
-L8 {5 :E:E:G#:G#} //EN LA SIGUIENTE SECCION
-//QUE SEAN ACORDES LARGOS 
+L8 {5 :E:E:G#:G#} //
 
 //MELODIA B
 
 L4 :: {3 G#~E~}
 
-G#~E:
+G#~E: //TRANSICION
 
-L8 {5 :G:G:E:E} 
+//MELODIA C Y D
+
+L8 {7 O4 :G:G :E:E} 
+
+:G:G//FIN MELODIA D
+
+//--------RIFF PRINCIPAL
+
+{6 :E:::G#::}
+
 
 
 //------------ PIANO VOZ MEDIA
@@ -412,16 +420,23 @@ RELEASETIME=250
 
 L8 {{6 :A~::B~:}}//13 CC(INTRO Y MEL A) X2
 
-L8 {5 :A:A:B:B} //EN LA SIGUIENTE SECCION
-//QUE SEAN ACORDES LARGOS 
+L8 {5 :A:A:B:B} 
 
 //MELODIA B
 
 
 L4 ::{3 B~A~}
-B~A:
 
-L8 {5 :B:B:A:A} 
+B~A://TRANSICION
+
+
+//MELODIA C Y D
+L8 {7 :B:B:A:A} 
+
+:B:B
+//---------- RIFF PRINCIPAL
+
+{6 :A:::B::}
 
 //------------ PIANO VOZ AGUDA
 
@@ -445,19 +460,27 @@ RELEASETIME=250
 
 L8 {{6 :C~::D~:}}//13 CC(INTRO Y MEL A) X2
 
-L8 {5 :C:C:D:D}//EN LA SIGUIENTE SECCION
-//QUE SEAN ACORDES LARGOS 
+L8 {5 :C:C:D:D}//
 
 //MELODIA B
 
 
 L4:: {3 D~C~}
 
- D~C:
+ D~C: //TRANSICION
 
-L8 {5 :D:D:C:C}
+//---------MELODIA C Y D
 
-@6 //BOMBO 
+%%L8 {7 :D:D:C:C}
+
+
+:D:D
+//---------RIFF PRINCIPAL
+
+{6 :C:::D::}
+
+
+@6 //SUB
 WAVEFORM=5
 
 
@@ -473,11 +496,11 @@ RELEASETIME=400
 
 L16 O1 {{8 O1 A::: :::: E::: :::: }}
 
-%%L16 O1 A::: :::: E::: :::: A::: ::::
+L16 O1 A::: :::: E::: :::: A::: ::::
  
 L4{3 E~ A~} E~ A:
 
-L4{3 G~ A~} G~ A:
+L4{7 G~ A~} G~ A:
 
 
  
