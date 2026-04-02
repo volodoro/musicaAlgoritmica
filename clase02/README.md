@@ -1,3 +1,159 @@
+# Clase 02 (02.04.2026)
+
+## Horario Memoria Ignacio Mariño: Jueves 10:00 - 11:30   
+
+
+### Repaso efectos en BeepComp
+
+### Para ADSR
+
+Attacktime
+peaktime
+peaklevel
+decaytime
+sustainlevel
+
+### Fall Effect
+
+Es como un glissando hacia abajo
+
+se escribe 
+
+@1
+Fallspeed=1200
+fallwait=500
+
+Se activa con la coma
+
+ej: O4 B, GE B, GE B,G etc
+
+### Risespeed glissando hacia arriba
+
+risespeed=2400
+riserange=200
+
+se activa colocando un asterisco antes de la nota
+
+ej: O4 *BGE *BGE BG etc.
+
+### Beef Up!
+
+Sean dice que es como una distorsión. Va desde 0 a 100.
+Es como un clipping??
+
+se anota:
+
+BBEFUP=0 {NOTAS}
+BEEFUP=25 {NOTAS}
+ETC...
+
+### RINGMOD
+
+SE PUEDEN MODULAR DOS VOCES ENTRE ELLAS CON MODULACION DE ANILLO
+
+# CÓMO PARTIR DESDE UN PUNTO EN ESPECÍFICO DE LA PIEZA
+
+Yendo a cualquiera de las partes y colocando "%%".
+
+ej: 
+
+    O4 B, GE B, GE B,G etc
+ %% O4 B, GE B, GE B,G etc
+    O4 B, GE B, GE B,G etc
+### LFO
+PARÁMETROS
+
+LFO = ON/OFF
+LFOSPEED
+LFORANGE
+LFOWAIT
+
+### Astro effect
+
+Inspirado en el videojuego Astro Wars
+
+ASTRO=NUMERO
+
+## Bateria
+
+@D
+
+PINKNOISE ---> SONIDO MAS GRAVE PARA TODA LA BATERIA
+KICKNOISE=PINK ---> SOLO EL BOMBO SE OPACA
+
+### NIVEL DE RUIDO
+
+LOS SONIDOS SON UNA COMBINACIÓN DE ONDA CUADRADA Y RUIDO, POR LO QUE SUS PARÁMETROS SE PUEDEN CAMBIAR
+
+PARÁMETROS:
+
+SQUARELEVEL=NUMERO
+NOISELEVEL=NUMERO
+
+ESTOS PARÁMETROS SE PUEDEN CAMBIAR EN CUALQUIER PARTE DE LA PIEZA ABARCANDO LAS NOTAS QUE ESTÁN DESPUÉS DEL COMANDO
+
+### DRUM SOUND SHAPING
+
+SNAREPITCH=NUMERO
+KICKPITCH=NUMERO
+RESETDRUMS ---> VUELVEN TODOS LOS PARÁMETROS AL DEFAULT
+
+LARGO DE LAS NOTAS
+DEFAULT:
+KICK=40
+SNARE=140
+HH=20
+
+PARÁMETROS:
+
+KICKLENGHT=
+SNARELENGHT=
+HIHATLENGHT=
+
+### DELAY
+
+EXISTE UN DELAY STEREO QUE SE AÑADE A TODA LA PISTA
+
+PARÁMETROS:
+
+DELAY=ON/OFF
+DELAYTIME=
+DELAYLEVEL 50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ``` processing
 @G
 MASTERVOLUME=10
@@ -5,16 +161,22 @@ TEMPO=84
 LOOP = OF
 DELAY=OFFF
 
-V1= 5
-V2= 5
-V3=3 //PIANO GRAVE
-V4=3 //PIANO MEDIO
-V5=5 //PIANO AGUDO
-D= 10
+V1=10 // MELODIA 10
+V2= 10 //BAJO 10
+V3=4 //PIANO GRAVE  6
+V4=4//PIANO MEDIO  6
+V5=7 //PIANO AGUDO 10
+V6=10
+VD=15
+
+//------------------BATERIA
+
 @D
 
+SNAREPITCH=50
+SNARELENGTH=100
 
-L16 {8:} :S~S S:SH //INTRO 
+L16 {8:} :S~S S:SS //INTRO 
 
 {{8 H~SH H~SH H~SH H~SH}} //(RIFF  Y MEL A) X2
 
@@ -41,9 +203,26 @@ H~:S S:S: S:HH S:HH  //FILL PARA PASAR A MEL C
 
 //---------------- INTRO -------------------
 
+LFO=ON
+LFOSPEED=7
+LFORANGE=30
+LFOWAIT=180
+
+
+ATTACKTIME=5
+PEAKTIME=50
+PEAKLEVEL=90
+DECAYTIME=250
+SUSTAINLEVEL=50
+RELEASETIME=250
+
 {4  O4  L16AAAA O5 C:E:
 //CC1
 L16EEEE       O4B   O5 :  DE} //CC2
+
+
+
+
 
 // --------------- MELODIA A ----------------
 
@@ -174,17 +353,40 @@ L8 O2 A:O3 C E  G :  D : L16 O3 : A:C L2O2 A
 //------------- VOCES PIANO------------------
 
 
-
 @3 //PIANO VOZ GRAVE
+
+LFO=ON
+LFOSPEED=7
+LFORANGE=20
+LFOWAIT=150
+
+
+ATTACKTIME=22
+PEAKTIME=10
+PEAKLEVEL=90
+DECAYTIME=33
+SUSTAINLEVEL=75
+RELEASETIME=250
 
 O4
 
 L1: //CC1
 
-L8 {{6:E:::G#::}} //13 CC(INTRO Y MEL A) X2
+L8 {{6 :E~::G#~:}} //13 CC(INTRO Y MEL A) X2
+
+//---------AQUI ESTA EL %%
 
 L8 {5 :E:E:G#:G#} //EN LA SIGUIENTE SECCION
 //QUE SEAN ACORDES LARGOS 
+
+//MELODIA B
+
+L4 :: {3 G#~E~}
+
+G#~E:
+
+L8 {5 :G:G:E:E} 
+
 
 //------------ PIANO VOZ MEDIA
 
@@ -195,12 +397,31 @@ O4
 
 L1: //CC1
 
-L8 {{6 :A:::B::}}//13 CC(INTRO Y MEL A) X2
+LFO=ON
+LFOSPEED=7
+LFORANGE=20
+LFOWAIT=150
+
+ATTACKTIME=22
+PEAKTIME=10
+PEAKLEVEL=90
+DECAYTIME=33
+SUSTAINLEVEL=75
+RELEASETIME=250
+
+
+L8 {{6 :A~::B~:}}//13 CC(INTRO Y MEL A) X2
 
 L8 {5 :A:A:B:B} //EN LA SIGUIENTE SECCION
 //QUE SEAN ACORDES LARGOS 
 
+//MELODIA B
 
+
+L4 ::{3 B~A~}
+B~A:
+
+L8 {5 :B:B:A:A} 
 
 //------------ PIANO VOZ AGUDA
 
@@ -210,11 +431,56 @@ O4
 
 L1: //CC1
 
-L8 {{6 :C:::D::}}//13 CC(INTRO Y MEL A) X2
+LFO=ON
+LFOSPEED=7
+LFORANGE=20
+LFOWAIT=150
+
+ATTACKTIME=22
+PEAKTIME=10
+PEAKLEVEL=90
+DECAYTIME=33
+SUSTAINLEVEL=75
+RELEASETIME=250
+
+L8 {{6 :C~::D~:}}//13 CC(INTRO Y MEL A) X2
 
 L8 {5 :C:C:D:D}//EN LA SIGUIENTE SECCION
 //QUE SEAN ACORDES LARGOS 
+
+//MELODIA B
+
+
+L4:: {3 D~C~}
+
+ D~C:
+
+L8 {5 :D:D:C:C}
+
+@6 //BOMBO 
+WAVEFORM=5
+
+
+
+L1: 
+
+ATTACKTIME=30
+PEAKLEVEL=120
+PEAKTIME=300
+DECAYTIME=120
+SUSTAINLEVEL=100
+RELEASETIME=400
+
+L16 O1 {{8 O1 A::: :::: E::: :::: }}
+
+%%L16 O1 A::: :::: E::: :::: A::: ::::
  
+L4{3 E~ A~} E~ A:
+
+L4{3 G~ A~} G~ A:
+
 
  
 ```
+
+
