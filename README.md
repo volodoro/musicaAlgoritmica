@@ -4,30 +4,38 @@
 
 ### Prof. Sean Moscoso
 
-### Versión del código de la Tarea 1 al 04.04 0:40 hrs
+### Versión del código de la Tarea 1 al 06.04 0:00 hrs
 
 ```processing
 
 
 @G
-MASTERVOLUME=10
+MASTERVOLUME=40
 TEMPO=84
-LOOP =OFF
+LOOP=OFF
 DELAY=OFFF
 
-V1=6// MELODIA 6
-V2=6//BAJO 6
-V3=5//PIANO GRAVE  5
-V4=5//PIANO MEDIO  5
-V5=7 //PIANO AGUDO 7
-V6=8 //SUB 6
-V7=7 //MELODIA 2 7
-VD=15
+//-----------------MEZCLA
 
-//------------------BATERIA
+V1=7// MELODIA 7
+V2=6//BAJO 6
+V3=4//PIANO GRAVE  4
+V4=4//PIANO MEDIO  4
+V5=5 //PIANO AGUDO 5
+V6=6 //SUB 6
+V7=5 //MELODIA 2 5
+VD=15
+//PERCU 15
+
+
+
+
+
+//------------------PERCU
 
 @D
 
+L4 {6 :}
 
 SNAREPITCH=40
 SNARELENGTH=120
@@ -40,7 +48,6 @@ H~SH H~SH H~SH H~SH
 
 H~:S S:S: S:HH S:HH     //FILL PARA PASAR A MEL B
 
-//AQUI QUIERO HACER LA CAJA MAS AGUDA
 
 {3 S:HH S:HH S:HH S:HH} 
 
@@ -62,9 +69,24 @@ L16
           
 :S:SS
 
+//------------------ MELODIA PRINCIPAL
+(GTR1)
 
-@1 // MELODIA
+@1 // MELODIA PRINCIPAL
+
+//-----SONIDOS DE PAJARITOS
+
+
+WAVEFORM = 3
+FALLSPEED=3000
+
+ATTACKTIME=5
+
+O6
+L4 :: L16 A,A,A,: E,E,:: L16 D,::: F,F,::  
+
   
+WAVEFORM=1
 
 //---------------- INTRO -------------------
 
@@ -84,7 +106,6 @@ RELEASETIME=250
 {4  O4  L16AAAA O5 C:E:
 //CC1
 L16EEEE       O4B   O5 :  DE} //CC2
-
 
 
 
@@ -159,7 +180,15 @@ L16 O4 A O5 A~ E A~ E A G  BO6 EO5 G : G#~ A
 
 L16 :  O5 A~ E A~ E A G  BO6 EO5 G : G#~ : 
 
-: A: A L2 A 
+: A: A
+
+
+LFOSPEED=10
+LFORANGE=70
+LFOWAIT=1500
+
+
+ L2 A~
 
 //---------- FIN
 
@@ -169,6 +198,9 @@ L16 :  O5 A~ E A~ E A G  BO6 EO5 G : G#~ :
   
 
 @2// BAJO
+
+L4 {6 :}
+
 
 //---------------- INTRO -------------------
 
@@ -220,11 +252,14 @@ L8 O2 A:O3 C E  G :  D : L16 O3 : A:C L2O2 A
 
 @3 //PIANO VOZ GRAVE
 
+L4 {6 :}
+
 LFO=ON
 LFOSPEED=7
 LFORANGE=20
 LFOWAIT=150
 
+ASTRO=0
 
 ATTACKTIME=22
 PEAKTIME=10
@@ -274,6 +309,7 @@ L8 {5 :E:E:G#:G#}//
 
 //MELODIA B
 
+
 ATTACKTIME=22
 PEAKTIME=10
 PEAKLEVEL=90
@@ -281,11 +317,18 @@ DECAYTIME=33
 SUSTAINLEVEL=75
 RELEASETIME=250
 
-L4 :: {3 G#~E~}
+L4 ::
+ASTRO=10
+_
+
+ {3 G#~E~}
 
 G#~E: //TRANSICION
 
 //MELODIA C Y D
+
+^
+ASTRO=0
 
 L8 {7 O4 :G:G :E:E} 
 
@@ -306,7 +349,24 @@ L8 {6:E:::G#::} //6 VUELTAS RIFF
 //-------------- CODA
 
 O3 
+BEEFUP=75
+
+_
+
 L16 {8 A::A::A:  G::G::G: }
+
+BEEFUP=0
+
+
+ATTACKTIME=22
+PEAKTIME=10
+PEAKLEVEL=90
+DECAYTIME=100
+SUSTAINLEVEL=75
+RELEASETIME=2000
+
+
+:E:E L2E
 
 
 //------------ PIANO VOZ MEDIA
@@ -318,6 +378,8 @@ L16 {8 A::A::A:  G::G::G: }
 
 //--------------------RIFF PRINCIPAL
 O4
+L4 {6 :}
+
 
 L1: //CC1
 
@@ -325,6 +387,8 @@ LFO=ON
 LFOSPEED=7
 LFORANGE=20
 LFOWAIT=150
+
+ASTRO=0
 
 ATTACKTIME=22
 PEAKTIME=10
@@ -371,12 +435,19 @@ L8 {5 :A:A:B:B}//
 //MELODIA B
 
 
-L4 ::{3 B~A~}
+L4 ::
+ASTRO=10
+_
+
+{3 B~A~}
 
 B~A://TRANSICION
 
+^
 
 //MELODIA C Y D
+
+ASTRO = 0
 L8 {7 :B:B:A:A} 
 
 :B:B
@@ -395,18 +466,39 @@ L8 {6 :A:::B::}
 
 //---------- CODA
 
+BEEFUP=75
+
+_
 
 L16 {8 O4 :C::C::C O3 :B::B::B}
+
+BEEFUP=0
+
+
+ATTACKTIME=22
+PEAKTIME=10
+PEAKLEVEL=90
+DECAYTIME=100
+SUSTAINLEVEL=75
+RELEASETIME=2000
+
+
+:A: A L2 A
 
 //------------ PIANO VOZ AGUDA
 
 
 @5 //PIANO VOZ AGUDA
 
+L4 {6 :}
+
+
 LFO=ON
 LFOSPEED=7
 LFORANGE=20
 LFOWAIT=150
+
+ASTRO=0
 
 ATTACKTIME=22
 PEAKTIME=10
@@ -458,9 +550,17 @@ L8 {5 :C:C:D:D}//
 //MELODIA B
 
 
-L4:: {3 D~C~}
+
+L4::
+ASTRO =10 _
+
+
+ {3 D~C~}
 
  D~C: //TRANSICION
+
+ASTRO=0
+^
 
 //---------MELODIA C Y D
 
@@ -481,12 +581,29 @@ RELEASETIME=50
 
 //----------- CODA
 
+BEEFUP=75
+
 L16 {8 O4 ::E::E::  ::D::D::}
 
+BEEFUP=0
+
+
+ATTACKTIME=22
+PEAKTIME=10
+PEAKLEVEL=90
+DECAYTIME=100
+SUSTAINLEVEL=75
+RELEASETIME=2000
+
+
+_
+
+:C:C L2 C
 
 @6 //SUB
 WAVEFORM=5
 
+L4 {6 :}
 
 
 L1: 
@@ -508,10 +625,10 @@ L16 O1 A::: :::: E::: :::: A::: ::::
 L4{3 E~ A~} E~ A: //MELODIA B
 
 
- L4{7 G~ A~} :: 
+ L4{7 G~ A~}G~A: ::  
  //MELODIA C
 
-L1{6 :} //SILENCIO ULTIMO RIFF
+L1{5 :} //SILENCIO ULTIMO RIFF
 
 
 L8{4 A:A: G:G: } 
@@ -519,12 +636,36 @@ L4{4 A~G~ } //CODA 8 VUELTAS
 
 @7 //APOYO ARMONIA MELODIA D
 
+//AQUI HAY UN COMPAS Y MEDIO PARA LLENAR
+
+FALLSPEED=1000
+WAVEFORM= 0
+
+
+L16 O7  A,A, :: :E,~F, D,A,:D, :D,D,~ ::D,~ E,:::
+
+FALLSPEED=0
+WAVEFORM=2
+
 L1{{9 :}} //18 VUELTAS
 L1{4 :} //4 VUELTAS
 
 //-------------------- MELODIA C
 
 //ESTA GUITARRA ENTRA EN EL COMPAS 23 3ER TIEMPO
+
+LFO=ON
+LFOSPEED=7
+LFORANGE=40
+LFOWAIT=180
+
+
+ATTACKTIME=5
+PEAKTIME=50
+PEAKLEVEL=90
+DECAYTIME=250
+SUSTAINLEVEL=50
+RELEASETIME=250
 
 L16 {2 ::::}
 
@@ -536,7 +677,35 @@ L16 {2 ::::}
 
 L16  {3 O5 DDDO4B  O5 D~ O4 B O5 E~ EECE~C~ }
        
-O5 DDDO4B  O5 D~ O4 B~ O5 C~ 
+O5 DDDO4B  O5 D~ O4 B~ O5
+
+RELEASETIME=2000
+//solo afecta la ultima nota
+FALLSPEED= 800
+FALLWAIT = 900
+
+ C,~~~ //ESTO ES UNA BLANCA L2 :
+
+L1 {5 :}
+
+RELEASETIME=50
+WAVEFORM = 1
+
+L1 {4 :} L4 :::
+
+O4
+
+
+_
+
+L16 {4 CEAC EACE O3B O4DGO3B O4DG O3 B O4D }
+
+
+
+
+
+
+ 
 
 
 
