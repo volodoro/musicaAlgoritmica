@@ -1,5 +1,8 @@
 # Clase 03, Intro a Sonic Pi
 
+video para reemplazar partes de pájaros que no se ven tan bien en el video de la tarea 1:
+https://www.youtube.com/watch?v=bbIXJNtcH8s
+
 ## Herramientas de Síntesis en Sonic pi
 
 ```
@@ -107,3 +110,52 @@ puts lista.rotate(0)
 
 puts lista.rotate(1) #estoy desfasando por la cantidad de elementos del paréntesis
 ```
+
+# ARTE GENERATIVO 
+
+Se denomina generativo o procedural al arte que parcialmente o en su totalidad ha sido creado usando un sistema autónomo.
+
+• B. S. Johnson ---> The unfortunates
+Publica en 27 hojas separadas en una caja excepto la primera y la última página que están pegadas.
+
+• Hans Haacke ---> Condensation Cube
+
+La escritura automatica o el fluir de conciencia es el proceso o resultado de la escritura que no proviene de los pensamientos conscientes.
+
+• Cadaver Exquisito ---> Técnica usada por los surrealistas en 1925, y se basa en un juego de consecuencias.
+
+• Hubert Duprat ---> Larvas de libélula en un acuario
+
+# Cómo usar Samples
+
+```
+with_fx :reverb do
+  
+  
+  live_loop :audioLindo do
+    
+    sample :perc_bell, rate: rrand(-1,1), amp: rand, pan: rrand(-1,1)
+    
+    sleep rrand(0.1,1)
+    
+  end
+end
+```
+
+# se pueden plantear las estructuras if al revés
+
+```
+load_sample clap
+
+mano = [1,1,1,0,1,1,0,1,0,1,1,0]
+
+live_loop :playerUno do
+  
+  sample clap if mano.tick == 1
+  sleep 0.25
+  
+  
+end
+```
+
+
